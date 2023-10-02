@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Rafael Estrada - Contador</title>
+    <style>
+        /* Estilos CSS (mantenemos los estilos anteriores) */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Estilos para el botón de WhatsApp (mantenemos los estilos anteriores) */
+        .whatsapp-button {
+            display: block;
+            background-color: #25d366;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            margin: 20px 0;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+        
+        /* Estilos para la calculadora */
+        .calculator {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .calculator label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .calculator input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .calculator button {
+            background-color: #25d366;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .calculator #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .calculator #details {
+            margin-top: 10px;
+        }
+
+        /* Estilos para la sección de servicios y CTA */
+        .services-section {
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .services-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .services-list {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .cta-button {
+            background-color: #25d366;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            background-color: #128C7E;
+        }
+
+                /* Estilos para el botón de borrar */
+                .calculator #clear-button {
+            background-color: #e74c3c;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Juan Rafael Estrada</h1>
+        <h2>Contador Profesional</h2>
+    </header>
+
+    <div class="container">
+        <h2>Acerca de mí</h2>
+        <p>Soy un contador profesional con años de experiencia en el campo de la contabilidad. Mi objetivo es proporcionar servicios contables confiables y precisos a mis clientes.</p>
+
+        <div class="services-section">
+            <h2 class="services-title">Servicios</h2>
+            <ul class="services-list">
+                <li>Consultoría Contable</li>
+                <li>Inventarios</li>
+                <li>Costos y Gastos</li>
+                <li>Ventas y Compras</li>
+                <li>Planillas</li>
+                <li>Declaraciones Fiscales y más.</li>
+            </ul>
+            <a class="cta-button" href="#calculator-section">Prueba la Calculadora de Costos</a>
+        </div>
+
+        <h2 id="calculator-section">Calculadora Financiera</h2>
+        <div class="calculator">
+            <label for="income">Ingresos Mensuales (Córdobas):</label>
+            <input type="number" id="income" placeholder="Ingrese los ingresos mensuales">
+            <label for="expenses">Gastos Mensuales (Córdobas):</label>
+            <input type="number" id="expenses" placeholder="Ingrese los gastos mensuales">
+            <label for="taxRate">Tasa de Impuestos (%):</label>
+            <input type="number" id="taxRate" placeholder="Ingrese la tasa de impuestos">
+            <button id="calculate">Calcular</button>
+            <button id="clear-button" onclick="clearResults()">Borrar Resultados</button>
+            <p id="result"></p>
+            <div id="details"></div>
+        </div>
+
+        <h2>Contacto</h2>
+        <p>Si necesita servicios contables o tiene alguna pregunta, no dude en ponerse en contacto conmigo.</p>
+        <p>Email: juanestrada1003@gmail.com</p>
+        <p>Teléfono: (505) 8868-1575</p>
+        
+        <!-- Botón de contacto por WhatsApp (mantenemos el botón anterior) -->
+        <a class="whatsapp-button" href="https://wa.me/50588681575" target="_blank">Contactar por WhatsApp</a>
+    </div>
+
+    <script>
+        // JavaScript para la calculadora
+        function clearResults() {
+            document.getElementById("income").value = "";
+            document.getElementById("expenses").value = "";
+            document.getElementById("taxRate").value = "";
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("details").innerHTML = "";
+        }
+
+        document.getElementById("calculate").addEventListener("click", function() {
+            var incomeInCordobas = parseFloat(document.getElementById("income").value);
+            var expensesInCordobas = parseFloat(document.getElementById("expenses").value);
+            var taxRate = parseFloat(document.getElementById("taxRate").value);
+
+            var incomeInDollars = incomeInCordobas / 35.5; // Tasa de cambio ficticia para convertir a dólares
+            var expensesInDollars = expensesInCordobas / 35.5; // Tasa de cambio ficticia para convertir a dólares
+
+            var preTaxProfit = incomeInDollars - expensesInDollars;
+            var taxAmount = (preTaxProfit * (taxRate / 100)).toFixed(2);
+            var postTaxProfit = preTaxProfit - taxAmount;
+
+            document.getElementById("result").innerHTML = "Utilidad Mensual (Dólares): $" + postTaxProfit.toFixed(2);
+
+            var details = "<h3>Resumen:</h3>";
+            details += "<p>Ingresos (Córdobas): " + incomeInCordobas.toFixed(2) + "</p>";
+            details += "<p>Gastos (Córdobas): " + expensesInCordobas.toFixed(2) + "</p>";
+            details += "<p>Tasa de Impuestos (%): " + taxRate.toFixed(2) + "%</p>";
+            details += "<p>Utilidad Antes de Impuestos (Dólares): $" + preTaxProfit.toFixed(2) + "</p>";
+            details += "<p>Impuestos (Dólares): $" + taxAmount + "</p>";
+            details += "<p>Utilidad Después de Impuestos (Dólares): $" + postTaxProfit.toFixed(2) + "</p>";
+
+            document.getElementById("details").innerHTML = details;
+        });
+    </script>
+</body>
+</html>
